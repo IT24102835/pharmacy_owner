@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New Budget Report</title>
+</head>
+<body>
+    <h1>New Budget Report</h1>
+    <form th:action="@{/finance/reports}" th:object="${report}" method="post">
+        <div>
+            <label>Report Name:</label>
+            <input type="text" th:field="*{reportName}" />
+        </div>
+        <div>
+            <label>Generation Date:</label>
+            <input type="date" th:field="*{generationDate}" />
+        </div>
+        <div>
+            <label>Total Revenue:</label>
+            <input type="text" th:field="*{totalRevenue}" />
+        </div>
+        <div>
+            <label>Total Expenses:</label>
+            <input type="text" th:field="*{totalExpenses}" />
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</body>
+</html>

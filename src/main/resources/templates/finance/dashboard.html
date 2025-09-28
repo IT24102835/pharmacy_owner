@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Finance Dashboard</title>
+</head>
+<body>
+    <h1>Finance Dashboard</h1>
+
+    <h2>Financial Plans</h2>
+    <a href="/finance/plans/new">Add New Plan</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Plan Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Budget</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="plan : ${financialPlans}">
+                <td th:text="${plan.planName}"></td>
+                <td th:text="${plan.startDate}"></td>
+                <td th:text="${plan.endDate}"></td>
+                <td th:text="${plan.budget}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Budget Reports</h2>
+    <a href="/finance/reports/new">Add New Report</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Report Name</th>
+                <th>Generation Date</th>
+                <th>Total Revenue</th>
+                <th>Total Expenses</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="report : ${budgetReports}">
+                <td th:text="${report.reportName}"></td>
+                <td th:text="${report.generationDate}"></td>
+                <td th:text="${report.totalRevenue}"></td>
+                <td th:text="${report.totalExpenses}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Admin</h2>
+    <a href="/admin/staff">Manage Staff</a>
+
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout"/>
+    </form>
+</body>
+</html>
