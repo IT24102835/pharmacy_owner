@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Staff Management</title>
+</head>
+<body>
+    <h1>Staff Management</h1>
+
+    <!-- Create New Staff -->
+    <h2>Add New Staff</h2>
+    <form th:action="@{/owner/staff}" th:object="${newStaff}" method="post">
+        <div>
+            <label>Username:</label>
+            <input type="text" th:field="*{username}" required/>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" th:field="*{password}" required/>
+        </div>
+        <div>
+            <label>Role:</label>
+            <select th:field="*{role}" required>
+                <option value="STAFF">Staff</option>
+                <option value="OWNER">Owner</option>
+            </select>
+        </div>
+        <button type="submit">Add Staff</button>
+    </form>
+
+    <hr/>
+
+    <!-- List of Staff -->
+    <h2>Existing Staff</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="staff : ${staffList}">
+                <td th:text="${staff.staffId}"></td>
+                <td th:text="${staff.username}"></td>
+                <td th:text="${staff.role}"></td>
+                <td th:text="${staff.active}"></td>
+                <td>
+                    <a th:href="@{/owner/staff/delete/{id}(id=${staff.staffId})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/owner/dashboard}">Back to Dashboard</a>
+</body>
+</html>

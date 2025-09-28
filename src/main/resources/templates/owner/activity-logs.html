@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Staff Activity Logs</title>
+</head>
+<body>
+    <h1>Staff Activity Logs</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Log ID</th>
+                <th>Staff Member</th>
+                <th>Activity Type</th>
+                <th>Description</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="log : ${logs}">
+                <td th:text="${log.logId}"></td>
+                <td th:text="${log.staff.username}"></td>
+                <td th:text="${log.activityType}"></td>
+                <td th:text="${log.description}"></td>
+                <td th:text="${log.activityTimestamp}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/owner/dashboard}">Back to Dashboard</a>
+</body>
+</html>

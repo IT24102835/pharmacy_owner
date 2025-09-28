@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Staff Dashboard</title>
+</head>
+<body>
+    <h1 th:text="${message}">Welcome!</h1>
+    <p>This is the staff dashboard.</p>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>

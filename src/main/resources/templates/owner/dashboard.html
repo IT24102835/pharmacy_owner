@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Owner Dashboard</title>
+</head>
+<body>
+    <h1>Owner Dashboard</h1>
+    <p>Welcome, Owner!</p>
+
+    <div>
+        <h2>Quick Stats</h2>
+        <p>Total Financial Plans: <span th:text="${financialPlans.size()}">0</span></p>
+        <p>Total Budget Reports: <span th:text="${budgetReports.size()}">0</span></p>
+        <p>Total Staff Members: <span th:text="${staffCount}">0</span></p>
+    </div>
+
+    <div>
+        <h2>Management Links</h2>
+        <ul>
+            <li><a th:href="@{/owner/finance}">Manage Finance</a></li>
+            <li><a th:href="@{/owner/staff}">Manage Staff</a></li>
+            <li><a th:href="@{/owner/logs}">View Activity Logs</a></li>
+        </ul>
+    </div>
+
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
